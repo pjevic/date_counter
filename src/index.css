@@ -24,19 +24,42 @@ body {
 
 .container {
   height: 100vh;
+  max-width: 30rem;
   margin: 5rem auto;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+.container__slider,
+.container__control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  height: 6rem;
+
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.contaner__slider {
+  padding: 1rem;
 }
 
 .container__control {
-  width: 20rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.slider {
+  margin-right: 1rem;
+}
+
+.input {
+  padding: 1rem;
 }
 
 .btn {
@@ -53,6 +76,12 @@ body {
 .btn:hover {
   background-color: rgba(0, 0, 0, 0.6);
   color: #eee;
+}
+
+.btn--reset {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  width: 100%;
 }
 
 .text {

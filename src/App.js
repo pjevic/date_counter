@@ -18,15 +18,6 @@ function Counter() {
   const date = new Date();
   date.setDate(date.getDate() + count);
 
-  function handleStepMinus() {
-    if (step === 1) return;
-    setStep((s) => s - 1);
-  }
-
-  function handleSetpPlus() {
-    setStep((s) => s + 1);
-  }
-
   function handelCountMinus() {
     setCount((c) => c - step);
   }
@@ -35,23 +26,36 @@ function Counter() {
     setCount((c) => c + step);
   }
 
+  function hanldeReset() {
+    setStep(1);
+    setCount(0);
+  }
+
   return (
     <div className="container">
-      <div className="container__control">
-        <button onClick={handleStepMinus} className="btn">
-          -
-        </button>
-        <p>Step: {step}</p>
-        <button onClick={handleSetpPlus} className="btn">
-          +
-        </button>
+      <div className="container__slider">
+        <input
+          type="range"
+          min="0"
+          max="10"
+          step="1"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+          className="slider"
+        />
+        <span>Step: {step}</span>
       </div>
 
       <div className="container__control">
         <button onClick={handelCountMinus} className="btn">
           -
         </button>
-        <p>Count: {count}</p>
+        <input
+          type="number "
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+          className="input"
+        />
         <button onClick={handelCountPlus} className="btn">
           +
         </button>
@@ -71,6 +75,12 @@ function Counter() {
         )}
         <span>&nbsp;{date.toDateString()}</span>
       </span>
+
+      {(step !== 1 || count !== 0) && (
+        <button onClick={hanldeReset} className="btn btn--reset">
+          Reset
+        </button>
+      )}
     </div>
   );
 }
